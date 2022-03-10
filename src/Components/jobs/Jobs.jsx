@@ -3,9 +3,7 @@ import axios from "axios";
 import Cards from "../cards/Cards";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { useHistory } from "react-router-dom";
 function Jobs() {
-  let history = useHistory();
   const [data, setdata] = useState([]);
   useEffect(() => {
     axios

@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch  } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch  } from "react-router-dom";
 import Login from './Components/login/login';
 import Jobs from './Components/jobs/Jobs';
 import Header from './Components/header/Header';
