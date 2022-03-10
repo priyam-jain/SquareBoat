@@ -1,0 +1,10 @@
+.scrollable {
+  overflow: scroll;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.header {
+  background-color: white;
+}
