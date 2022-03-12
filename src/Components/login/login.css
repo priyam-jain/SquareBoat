@@ -28,3 +28,18 @@
   position: absolute;
   right: 50px;
 }
+
+.error {
+  color: red;
+  position: absolute;
+  right: 50px;
+}
+
+.register {
+  color: #000;
+}
+
+a {
+  color: #43afff;
+  text-decoration: none;
+}

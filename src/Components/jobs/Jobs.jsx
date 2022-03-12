@@ -3,6 +3,11 @@ import axios from "axios";
 import Cards from "../cards/Cards";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import HomeIcon from "@mui/icons-material/Home";
+import { Link } from "react-router-dom";
+import "./Jobs.css";
+
 function Jobs() {
   const [data, setdata] = useState([]);
   useEffect(() => {
@@ -19,10 +24,19 @@ function Jobs() {
     <div>No jobs posted by you</div>
   ) : (
     <div className="container mt-2">
-      <div data-testid="carddiv" className="row">
+      <div className="homie">
+        <HomeIcon />
+        <Link to="/" className="hom">
+          Home
+        </Link>
+      </div>
+      <Typography variant="h6" gutterBottom component="div" className="posted">
+        Jobs posted by you
+      </Typography>
+      <div className="row">
         {data.map((item) => (
           <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} className="grids">
               <Cards
                 key={item.id}
                 id={item.id}

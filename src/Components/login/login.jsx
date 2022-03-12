@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -10,13 +10,14 @@ import "./login.css";
 function Login(props) {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
-  const [value, setvalue] = useState("second");
+  const [error, seterror] = useState(false);
   let history = useHistory();
   function success() {
     props.suckcess();
   }
   async function login() {
     try {
+      seterror(false);
       const res = await axios.post(
         `https://jobs-api.squareboat.info/api/v1/auth/login`,
         JSON.stringify({ email: username, password: password }),
@@ -29,15 +30,11 @@ function Login(props) {
       console.log(res.data.data.token);
       localStorage.setItem("token", res.data.data.token);
       success();
-      history.push("/");
+      history.push("/jobs");
     } catch {
-      alert("Invalid Credentials");
+      seterror(true);
     }
   }
-  useEffect(() => {
-    console.log("first");
-    setvalue("");
-  }, [value]);
 
   return (
     <div className="form-box">
@@ -53,9 +50,7 @@ function Login(props) {
         onChange={(e) => setusername(e.target.value)}
       />
       <br />
-      <Link to="/login" className="forgot">
-        Forgot Password?
-      </Link>
+      <Link className="forgot">Forgot your Password?</Link>
       <br />
       <br />
       <TextField
@@ -66,10 +61,31 @@ function Login(props) {
         onChange={(e) => setpassword(e.target.value)}
       />
       <br />
+      {error && (
+        <Typography
+          variant="body2"
+          gutterBottom
+          component="div"
+          className="error"
+        >
+          Incorrect email address or password
+        </Typography>
+      )}
+      <br />
       <br />
       <Button variant="contained" id="btnLogin" onClick={(e) => login()}>
         Login
       </Button>
+      <br />
+      <br />
+      <Typography
+        variant="subtitle1"
+        gutterBottom
+        component="div"
+        className="register"
+      >
+        New to MYJOBS? <Link>Create an account</Link>
+      </Typography>
     </div>
   );
 }

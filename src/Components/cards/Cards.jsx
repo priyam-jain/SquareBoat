@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Grid from "@mui/material/Grid";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import "./Cards.css";
@@ -35,29 +34,27 @@ function Cards(props) {
   const handleClose = () => setOpen(false);
   return (
     <div>
-      <Grid item xs={24}>
-        <Card sx={{ maxWidth: 345 }}>
-          <CardActionArea>
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {props.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {props.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => handleOpen(props.id)}
-            >
-              Apply
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
+      <Card sx={{ maxWidth: 345 }} className="cards">
+        <CardActionArea>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {props.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {props.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => handleOpen(props.id)}
+          >
+            Apply
+          </Button>
+        </CardActions>
+      </Card>
       <Modal
         open={open}
         onClose={handleClose}
