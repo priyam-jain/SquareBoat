@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Grid";
 import axios from "axios";
+import Avatar from "@mui/material/Avatar";
 import "./Cards.css";
 
 function Cards(props) {
@@ -73,6 +74,7 @@ function Cards(props) {
           {data.map((item) => (
             <Card sx={{ minWidth: 275 }}>
               <CardContent>
+                <Avatar>{item.name[0]}</Avatar>
                 <Typography
                   sx={{ fontSize: 14 }}
                   color="text.secondary"

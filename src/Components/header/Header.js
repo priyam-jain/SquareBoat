@@ -1,54 +1,75 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-const colour={
-    backgroundColor: 'orange',
-}
+import { styled } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Avatar from "@mui/material/Avatar";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useHistory } from "react-router-dom";
+import './Header.css';
+
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  alignItems: 'flex-start',
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(2),
+  // Override media queries injected by theme.mixins.toolbar
+  '@media all': {
+    minHeight: 250,
+  },
+}));
 function Header(props) {
+  let history = useHistory();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+    history.push('/logout');
+  };
 
-
-  if(props.loggedIn)
-    return (
-      <div>
-        <nav data-testid="navid" className="navbar navbar-light navbar-expand-lg" style={colour}>
-  <Link className="navbar-brand" to="/">Jobs</Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="navbar-nav mr-auto">
-      <li className="nav-item active" data-cy="home" id="home">
-        <Link to='/' className="nav-link">Jobs</Link>
-      </li>
-     
-    </ul>
-    
-      <Link to="/logout">
-    <button className="btn btn-danger my-2 my-sm-0" type="button" id="btnLogout">Log out</button>
-    </Link>
-    
-  </div>
-</nav>
-      
-
-  </div>
-    )
-    else 
       return (
-        <nav data-testid="navid" className="navbar navbar-expand-lg navbar-light" style={colour}>
-  <Link className="navbar-brand" to="/">Jobs</Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="nav navbar-nav navbar-right">
-      <li data-cy="login" id="login" className="nav-item active navbar-right">
-        <Link to='/login' className="nav-link">Login</Link>
-      </li>
-      </ul>
-        </div>
-</nav>
+        <Box sx={{ flexGrow: 1 }} className="navbox">
+  <AppBar position="static" className="navbar">
+    <StyledToolbar>
+    <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            className='title'
+          >
+            MY<span className='job'>JOBS</span>
+          </Typography>
+      {props.loggedIn?(<div className='logins'><Button
+        id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      >
+        <Avatar>H</Avatar><KeyboardArrowDownIcon/>
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}> Logout</MenuItem>
+      </Menu></div>):(<Button className='btn'><Link to='/login' className='log'>LogIn/SignUp</Link></Button>)}
+    </StyledToolbar>
+  </AppBar>
+</Box>
       )
 }
 
