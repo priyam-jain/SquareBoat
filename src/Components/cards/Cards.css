@@ -12,3 +12,9 @@
 .cards {
   width: 200px;
 }
+
+.apply {
+  position: relative;
+  padding-right: 0px;
+  background-color: #43afff33 !important;
+}

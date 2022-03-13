@@ -19,6 +19,9 @@ function Home() {
         alt="home"
         className="image"
       />
+      <Typography variant="h5" gutterBottom component="div">
+        Why Us
+      </Typography>
     </div>
   );
 }

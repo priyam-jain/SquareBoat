@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import "./Cards.css";
 
 function Cards(props) {
@@ -45,11 +46,15 @@ function Cards(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
+
         <CardActions>
+          <LocationOnOutlinedIcon />
+          {props.location}
           <Button
             size="small"
             color="primary"
             onClick={() => handleOpen(props.id)}
+            className="apply"
           >
             Apply
           </Button>
