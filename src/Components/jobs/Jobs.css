@@ -23,8 +23,9 @@
   flex-grow: 1;
   width: 100%;
   display: flex;
-  padding: 10px;
-  padding-left: 50px;
+  padding-left: 10px;
+  padding-bottom: 50px;
+  text-overflow: unset;
 }
 
 .row {
@@ -37,4 +38,5 @@
   width: 100%;
   display: flex;
   padding: 10px;
+  flex-wrap: wrap;
 }
