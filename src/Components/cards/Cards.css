@@ -18,3 +18,20 @@
   padding-right: 0px;
   background-color: #43afff33 !important;
 }
+
+.now {
+  flex-direction: row;
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.applicants {
+  margin: 10px;
+}
+
+.paper {
+  background-color: #a9afbc !important;
+}

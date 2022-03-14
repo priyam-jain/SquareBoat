@@ -8,6 +8,7 @@ import Modal from "@mui/material/Modal";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import Paper from "@mui/material/Paper";
 import "./Cards.css";
 
 function Cards(props) {
@@ -73,28 +74,32 @@ function Cards(props) {
               Applicants for this job
             </Typography>
           </div>
-          {data.map((item) => (
-            <Card sx={{ minWidth: 275 }}>
-              <CardContent>
-                <Avatar>{item.name[0]}</Avatar>
-                <Typography
-                  sx={{ fontSize: 14 }}
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  {item.name}
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  {item.email}
-                </Typography>
-                <Typography variant="body2">
-                  Skills
-                  <br />
-                  {item.skills}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
+          <Paper elevation={3} className="paper">
+            <div className="now">
+              {data.map((item) => (
+                <Card sx={{ minWidth: 275 }} className="applicants">
+                  <CardContent>
+                    <Avatar>{item.name[0]}</Avatar>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {item.name}
+                    </Typography>
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                      {item.email}
+                    </Typography>
+                    <Typography variant="body2">
+                      Skills
+                      <br />
+                      {item.skills}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </Paper>
         </Box>
       </Modal>
     </div>

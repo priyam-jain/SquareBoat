@@ -31,6 +31,7 @@
 .row {
   position: absolute;
   left: 100px;
+  right: 100px;
   align-items: flex-start;
   top: 175px;
   flex-direction: row;
